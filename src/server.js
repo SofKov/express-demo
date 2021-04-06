@@ -1,9 +1,11 @@
 const express = require("express");
+const { saveTask }  = require("../utils/notes");
+
+// Init the instance of express
 const app = express();
 
 // middleware
 app.use(express.json());
-
 
 // GET METHOD
 
@@ -76,6 +78,12 @@ app.post("/game", (req, res) => {
     res.send({message: `Your favourite game is ${req.body.title}`});
 });
 
+// created post route called "/tasks" - used insomnia to send a json task - when the route hits its endpoint in express, the task is saved to a .txt file calles "tasks.txt" - finish controller by sending back a string "success" to indicate successful task
+app.post("/tasks", (req, res) => {
+    console.log(req.body);
+    saveTask(req.body.task);
+    res.send({message: `Success`});
+})
 
 
 app.listen(5000, () => {
