@@ -27,17 +27,18 @@ app.get("/", (req, res) => {
 //     res.send({person});
 // });
 
-// created another get route named "kovother" to see which style of code I prefer for objects 
-app.get("/kovother", (req,res) => {
-    res.send({person: {fName: "Sofia", lName: "Kovalevskaia", age: 27}});
-});
-
 // setting up a query string with my name and age, and sending it as a response
 // query strings are one of the ways of sending info to your server - the request can have query objects inside, and if we meet the requirements to that (i.e ? to signify the start of query string and assign values accordingly) - that object is then stored in the server - this data is then used at a later point
 app.get("/kov", (req, res) => {
     console.log(req.query);
     res.send({message: `Hello ${req.query.name}, you are ${req.query.age} years old.`});
 });
+
+// created another get route named "kovother" to see which style of code I prefer for objects 
+app.get("/kovother", (req,res) => {
+    res.send({person: {fName: "Sofia", lName: "Kovalevskaia", age: 27}});
+});
+
 
 // set up path parameters - part of get request but allows us to provide more information with the get request 
 // :id logs an object named {id: '300'} - will always stringify the object as it is key value pairs
@@ -48,6 +49,7 @@ app.get("/kov", (req, res) => {
 
 //     res.send({message: "woof"});
 // });
+
 
 // another type of path param - name
 // :name logs an object named {name: 'gypsy'} 
